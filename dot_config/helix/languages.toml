@@ -1,0 +1,42 @@
+[[language]]
+name="python"
+scope="scope.python"
+language-servers=["ruff","pylsp","ty", "codebook"]
+formatter={command="ruff", args=["format","-"]}
+auto-format=true
+
+[[language]]
+name = "markdown"
+language-servers = ["codebook"]
+
+[language-server.codebook]
+command="codebook-lsp"
+args = ["serve"]
+
+[language-server.mylang-lsp]
+command="typescript-language-server"
+args = ["--stdio"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[language-server.pylsp.config.pylsp.plugins.pycodestyle]
+enabled = false
+
+[language-server.pylsp.config.pylsp.plugins.pyflakes]
+enabled = false
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
+# not going to use this just yet
+[language-server.ruff.config.settings]
+lint.extendSelect=["E","UP","B","SIM","I"]
+
+
+[[language]]
+name = "json"
+formatter = { command = "prettier", args = ["--parser", "json"] }
+auto-format = true
