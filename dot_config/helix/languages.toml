@@ -1,42 +1,71 @@
 [[language]]
-name="python"
-scope="scope.python"
-language-servers=["ruff","pylsp","ty", "codebook"]
-formatter={command="ruff", args=["format","-"]}
-auto-format=true
+name = "go"
+language-servers = ["gopls"]
+
+[language-server.gopls]
+command = "gopls"
+args = ["-logfile=/tmp/gopls.log", "serve"]
+
+[language-server.gopls.config]
+"ui.diagnostic.staticcheck" = true
+"formatting.gofumpt" = true
+
+[[language]]
+name = "python"
+scope = "scope.python"
+language-servers = ["ruff", "pylsp", "ty", "codebook"]
+formatter = { command = "ruff", args = ["format", "-"] }
+auto-format = true
 
 [[language]]
 name = "markdown"
 language-servers = ["codebook"]
 
-[language-server.codebook]
-command="codebook-lsp"
-args = ["serve"]
+[[language]]
+name = "typescript"
+language-servers = ["typescript-language-server"]
+roots = ["tsconfig.json"]
 
-[language-server.mylang-lsp]
-command="typescript-language-server"
-args = ["--stdio"]
-
-[language-server.ruff]
-command = "ruff"
-args = ["server"]
-
-[language-server.pylsp.config.pylsp.plugins.pycodestyle]
-enabled = false
-
-[language-server.pylsp.config.pylsp.plugins.pyflakes]
-enabled = false
-
-[language-server.ty]
-command = "ty"
-args = ["server"]
-
-# not going to use this just yet
-[language-server.ruff.config.settings]
-lint.extendSelect=["E","UP","B","SIM","I"]
-
+[[language]]
+name = "svelte"
+language-servers = ["svelteserver"]
+roots = ["svelte.config.js"]
 
 [[language]]
 name = "json"
 formatter = { command = "prettier", args = ["--parser", "json"] }
 auto-format = true
+
+[language-server.pylsp]
+command = "pylsp"
+
+[language-server.pylsp.config.pylsp.plugins]
+pycodestyle.enabled = false
+pyflakes.enabled = false
+
+[language-server.ty]
+command = "ty"
+args = ["server"]
+
+[language-server.codebook]
+command = "codebook-lsp"
+args = ["serve"]
+
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+# not going to use this just yet
+[language-server.ruff.config.settings]
+lint.extendSelect = ["E", "UP", "B", "SIM", "I"]
+
+[language-server.superhtml]
+args = ["--syntax-only"]
+
+[language-server.typescript-language-server]
+command = "typescript-language-server"
+args = ["--stdio"]
+
+[language-server.svelteserver]
+command = "svelteserver"
+args = ["--stdio"]
