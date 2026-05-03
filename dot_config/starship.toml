@@ -114,7 +114,7 @@ format = "[ $symbol $branch ]($style)"
 # ignore_branches=['main']
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](fg:#d3869b bg:#3d424a) ($ahead_behind$stashed)]($style)"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](fg:#d3869b bg:#3d424a)( $ahead_behind$stashed) ]($style)"
 style = "fg:#b4c0c8 bg:#3d424a"
 conflicted = "​"
 untracked = "​"
