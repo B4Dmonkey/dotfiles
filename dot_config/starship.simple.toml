@@ -1,0 +1,70 @@
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$python\
+$character"""
+
+
+palette = "compline"
+
+[palettes.compline]
+bg1 = "#282c34"
+bg2 = "#3d424a"
+bg3 = "#515761"
+
+fg_main = "#e0dcd4"
+fg_dim  = "#b4c0c8"
+fg_dir  = "#ccc4b4"
+
+accent  = "#d3869b"
+
+# shared colors (mental model)
+# bg1 = #282c34
+# bg2 = #3d424a
+# fg_main = #e0dcd4
+# fg_dim = #b4c0c8
+# fg_dir = #ccc4b4
+
+[directory]
+style = "fg:#ccc4b4 bg:#282c34"
+format = "[ $path ]($style)"
+
+[git_branch]
+symbol = ""
+style = "fg:#b4c0c8 bg:#3d424a"
+format = "[ $symbol $branch ]($style)"
+# ignore_branches=['main']
+
+[git_status]
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted )](fg:#d3869b bg:#3d424a)($ahead_behind$stashed )]($style)"
+style = "fg:#b4c0c8 bg:#3d424a"
+conflicted = "​"
+untracked = "​"
+modified = "​"
+staged = "​"
+renamed = "​"
+deleted = "​"
+stashed = "≡"
+
+[git_state]
+style = "fg:#b4c0c8 bg:#3d424a"
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+
+[cmd_duration]
+style = "bg:#2e2e2e"
+format = "[[  $duration ](fg:#1a1d21 bg:#e0dcd4)]($style)"
+
+[python]
+style = "italic fg:#b4c0c8 bg:#282c34"
+format = "[ $virtualenv(fg:#282c34 bg:none )]($style)"
+
+# [character]
+# format = '$symbol '
+# success_symbol= " [❯](bold green)"
+# error_symbol= "[ ❯](bold red)"

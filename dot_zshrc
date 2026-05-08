@@ -72,6 +72,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 #Starship Commmand Prompt
+if [[ "$TERM_PROGRAM" == "zed" || "$TERM_PROGRAM" == "vscode" ]]; then
+  export STARSHIP_CONFIG=~/.config/starship.simple.toml
+fi
 eval "$(starship init zsh)"
 
 # export LANG=en_US.UTF-8
