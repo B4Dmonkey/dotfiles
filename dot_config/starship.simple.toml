@@ -1,4 +1,5 @@
 format = """
+[  ](fg:bold dir_color bg:bg3)\
 $username\
 $hostname\
 $directory\
@@ -14,16 +15,20 @@ $character"""
 palette = "compline"
 
 [palettes.compline]
-bg1 = "#282c34"
-bg2 = "#3d424a"
-bg3 = "#515761"
+bg1 = "#2D2A2E"
+bg2 = "#221F22"
+bg3 = "#19181A"
 
-fg_main = "#e0dcd4"
+fg_main = "#FCFCFA"
 fg_dim  = "#b4c0c8"
 fg_dir  = "#ccc4b4"
 
+# styles here https://monokai.pro/contribute
 accent  = "#d3869b"
-
+dir_color = "#A9DC76"
+branch = "#C1C0C0"
+dirt_status = "#FF6188"
+chng_status = " #78DCE8"
 # shared colors (mental model)
 # bg1 = #282c34
 # bg2 = #3d424a
@@ -32,18 +37,19 @@ accent  = "#d3869b"
 # fg_dir = #ccc4b4
 
 [directory]
-style = "fg:#ccc4b4 bg:#282c34"
+style = "fg:bold dir_color bg:bg2"
+# style = "fg:bold bg2 bg:dir_color"
 format = "[ $path ]($style)"
 
 [git_branch]
 symbol = ""
-style = "fg:#b4c0c8 bg:#3d424a"
+style = "fg:italic branch bg:bg1"
 format = "[ $symbol $branch ]($style)"
 # ignore_branches=['main']
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted )](fg:#d3869b bg:#3d424a)($ahead_behind$stashed )]($style)"
-style = "fg:#b4c0c8 bg:#3d424a"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted )](fg:dirt_status bg:bg1)($ahead_behind$stashed )]($style)"
+style = "fg:chng_status bg:bg1"
 conflicted = "​"
 untracked = "​"
 modified = "​"
@@ -53,7 +59,7 @@ deleted = "​"
 stashed = "≡"
 
 [git_state]
-style = "fg:#b4c0c8 bg:#3d424a"
+style = "fg:#b4c0c8 bg:bg1"
 format = '[\($state( $progress_current/$progress_total)\)]($style)'
 
 [cmd_duration]
