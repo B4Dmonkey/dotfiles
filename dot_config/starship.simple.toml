@@ -28,7 +28,7 @@ accent  = "#d3869b"
 dir_color = "#A9DC76"
 branch = "#C1C0C0"
 dirt_status = "#FF6188"
-chng_status = " #78DCE8"
+chng_status = "#78DCE8"
 # shared colors (mental model)
 # bg1 = #282c34
 # bg2 = #3d424a
