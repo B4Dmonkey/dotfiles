@@ -35,7 +35,7 @@ enable=true
 # left=["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
 # mode.normal="<NOR>"
 # mode.select="SEL\ue0ba"
-# # separator=""
+# separator=""
 
 [keys.normal]
 esc = ["collapse_selection","keep_primary_selection"]
