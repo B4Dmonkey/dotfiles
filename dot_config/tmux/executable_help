@@ -26,4 +26,5 @@ printf "  %-48s  %s\n"         "${b}MISC${r}"                          "Enter   
 printf "  %-40s\n"             "prefix + :     command prompt"
 printf "  %-40s\n"             "prefix + ?     this help"
 printf " %s\n" "$sep"
-} | less -R
+} | bat --plain --paging=never
+read -rsn1

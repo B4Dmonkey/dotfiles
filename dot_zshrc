@@ -60,7 +60,7 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions fzf-tab alias-finder wd python nvm chezmoi direnv)
+plugins=(git zsh-autosuggestions fzf-tab alias-finder wd python nvm chezmoi direnv tmux)
 
 zstyle ':omz:plugins:alias-finder' autoload yes
 zstyle ':omz:plugins:alias-finder' longer yes
