@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+b=$'\033[1m'
+r=$'\033[0m'
+width=$(tput cols 2>/dev/null || echo 72)
+sep=$(printf '─%.0s' $(seq 1 $((width - 2))))
+
+{
+printf "  ${b}TMUX  ·  Prefix: Ctrl+Space${r}\n"
+printf " %s\n" "$sep"
+printf "  %-48s  ${b}%s${r}\n" "${b}SESSIONS${r}"                     "PANES"
+printf "  %-40s  %s\n"         "prefix + \$     rename session"        "Alt + |        split left/right"
+printf "  %-40s  %s\n"         "prefix + s     list / switch"          "Alt + -        split top/bottom"
+printf "  %-40s  %s\n"         "prefix + d     detach"                 "Alt + hjkl     navigate panes"
+printf "  %-40s  %s\n"         "prefix + ( )   prev / next"            "Alt + HJKL     resize pane"
+printf "  %-40s  %s\n"         "tmux new -s X  new session"            "Alt + f        zoom pane"
+printf "  %-40s  %s\n"         "tmux attach    attach to last"         "Alt + x        kill pane"
+printf "  %-40s  %s\n"         "tmux ls        list sessions"          'prefix + { }   swap pane'
+printf "  %-48s  %s\n"         "${b}WINDOWS${r}"                       "prefix + !     break to window"
+printf "  %-40s  %s\n"         "prefix + c     new window"             "prefix + Space cycle layouts"
+printf "  %-40s\n"             "prefix + ,     rename window"
+printf "  %-40s  ${b}%s${r}\n" "prefix + w     list / switch"          "COPY MODE"
+printf "  %-40s  %s\n"         "prefix + n/p   next / prev"            "prefix + [     enter copy mode"
+printf "  %-40s  %s\n"         "prefix + 0-9   switch by number"       "q / Escape     exit"
+printf "  %-40s  %s\n"         "prefix + &     kill window"            "Space          start selection"
+printf "  %-48s  %s\n"         "${b}MISC${r}"                          "Enter          copy selection"
+printf "  %-40s\n"             "prefix + :     command prompt"
+printf "  %-40s\n"             "prefix + ?     this help"
+printf " %s\n" "$sep"
+} | less -R
