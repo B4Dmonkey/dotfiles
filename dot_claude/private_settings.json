@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "ask": [
+      "Bash(rm *)",
+      "Bash(rmdir *)",
+      "Bash(git clean *)",
+      "Bash(git reset --hard *)",
+      "Bash(git restore *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git branch -D *)"
+    ],
+    "deny": [
+      "Read(**/.env)",
+      "Read(**/.env.*)",
+      "Edit(**/.env)",
+      "Edit(**/.env.*)",
+      "Write(**/.env)",
+      "Write(**/.env.*)"
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "input=$(cat); cwd=$(echo \"$input\" | jq -r '.workspace.current_dir'); dir_name=$(basename \"$cwd\"); status=\"$(printf '\\033[96m%s\\033[0m' \"$dir_name\")\"; if git -C \"$cwd\" rev-parse --git-dir > /dev/null 2>&1; then branch=$(git -C \"$cwd\" rev-parse --abbrev-ref HEAD 2>/dev/null); [ -n \"$branch\" ] && status+=\" $(printf '\\033[2;37m[%s]\\033[0m' \"$branch\")\"; git_status=$(git -C \"$cwd\" --no-optional-locks status --porcelain 2>/dev/null); if [ -n \"$git_status\" ]; then modified=$(echo \"$git_status\" | grep -c '^ M' || true); untracked=$(echo \"$git_status\" | grep -c '^??' || true); staged=$(echo \"$git_status\" | grep -c '^[AMDRC]' || true); indicators=\"\"; [ \"$modified\" -gt 0 ] && indicators+=\"​\"; [ \"$untracked\" -gt 0 ] && indicators+=\"​\"; [ \"$staged\" -gt 0 ] && indicators+=\"​\"; [ -n \"$indicators\" ] && status+=\" $(printf '\\033[38;5;218m%s\\033[0m' \"$indicators\")\"; fi; fi; [ -n \"$VIRTUAL_ENV\" ] && status+=\" $(printf '\\033[2;37m%s\\033[0m' \"$(basename \"$VIRTUAL_ENV\")\")\"; echo \"$status\""
+  },
+  "enabledPlugins": {
+    "typescript-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true,
+    "ai@pydantic-skills": true
+  },
+  "extraKnownMarketplaces": {
+    "pydantic-skills": {
+      "source": {
+        "source": "github",
+        "repo": "pydantic/skills"
+      }
+    }
+  },
+  "alwaysThinkingEnabled": true,
+  "autoMemoryEnabled": true,
+  "autoDreamEnabled": true,
+  "theme": "dark-ansi"
+}

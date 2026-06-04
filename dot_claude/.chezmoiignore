@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Safe config files
+!CLAUDE.md
+!settings.json
+!keybindings.json
+
+# Coding rules
+!rules/
+!rules/**
+
