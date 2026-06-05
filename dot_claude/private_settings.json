@@ -13,6 +13,8 @@
     "deny": [
       "Read(**/.env)",
       "Read(**/.env.*)",
+      "Read(*.env)",
+      "Read(.env.*)",
       "Edit(**/.env)",
       "Edit(**/.env.*)",
       "Write(**/.env)",
@@ -36,8 +38,11 @@
       }
     }
   },
+  "effortLevel": "high",
+  "theme": "dark-ansi",
+  "editorMode": "normal",
+  "autoCompactEnabled": true,
   "alwaysThinkingEnabled": true,
   "autoMemoryEnabled": true,
-  "autoDreamEnabled": true,
-  "theme": "dark-ansi"
+  "autoDreamEnabled": true
 }
