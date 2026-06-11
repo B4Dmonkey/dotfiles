@@ -1,15 +1,5 @@
 {
   "permissions": {
-    "ask": [
-      "Bash(rm *)",
-      "Bash(rmdir *)",
-      "Bash(git clean *)",
-      "Bash(git reset --hard *)",
-      "Bash(git restore *)",
-      "Bash(git push --force *)",
-      "Bash(git push -f *)",
-      "Bash(git branch -D *)"
-    ],
     "deny": [
       "Read(**/.env)",
       "Read(**/.env.*)",
@@ -19,6 +9,16 @@
       "Edit(**/.env.*)",
       "Write(**/.env)",
       "Write(**/.env.*)"
+    ],
+    "ask": [
+      "Bash(rm *)",
+      "Bash(rmdir *)",
+      "Bash(git clean *)",
+      "Bash(git reset --hard *)",
+      "Bash(git restore *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(git branch -D *)"
     ]
   },
   "statusLine": {
@@ -28,7 +28,8 @@
   "enabledPlugins": {
     "typescript-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "ai@pydantic-skills": true
+    "ai@pydantic-skills": true,
+    "skill-creator@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "pydantic-skills": {
@@ -38,11 +39,11 @@
       }
     }
   },
+  "alwaysThinkingEnabled": true,
   "effortLevel": "high",
+  "autoMemoryEnabled": true,
+  "autoDreamEnabled": true,
   "theme": "dark-ansi",
   "editorMode": "normal",
-  "autoCompactEnabled": true,
-  "alwaysThinkingEnabled": true,
-  "autoMemoryEnabled": true,
-  "autoDreamEnabled": true
+  "autoCompactEnabled": true
 }
