@@ -73,3 +73,7 @@ args = ["--stdio"]
 [[language]]
 name = "ini"
 file-types = [ { glob = ".aws/config" }, { glob = ".aws/credentials" } ]
+
+# [[language]]
+# name = "tmux"
+# file-types = [ { glob = ".config/tmux/*.tmux" } ]

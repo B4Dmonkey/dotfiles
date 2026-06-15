@@ -88,7 +88,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-eval $(thefuck --alias)
+command -v thefuck &>/dev/null && eval $(thefuck --alias)
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -104,6 +104,8 @@ esac
 # pnpm end
 export PATH="/opt/homebrew/opt/mysql@8.0/bin:$PATH"
 
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh)"
+if [ -f "$HOME/.atuin/bin/env" ]; then
+  . "$HOME/.atuin/bin/env"
+  eval "$(atuin init zsh)"
+fi
 
