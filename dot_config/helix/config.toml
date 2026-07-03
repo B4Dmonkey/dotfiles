@@ -1,4 +1,4 @@
-theme="autumn"
+theme="monokai_pro_ristretto"
 
 [editor]
 line-number="relative"
@@ -30,12 +30,6 @@ after-delay.timeout=1000
 
 [editor.soft-wrap]
 enable=true
-# enable=false
-# [editor.statusline]
-# left=["mode", "spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
-# mode.normal="<NOR>"
-# mode.select="SEL\ue0ba"
-# separator=""
 
 [keys.normal]
 esc = ["collapse_selection","keep_primary_selection"]
