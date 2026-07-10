@@ -1,11 +1,11 @@
 ---
-name: retro
+name: bit-retro
 description: Conduct an end-of-session retrospective. Reviews what went well, what went wrong, how to improve collaboration, and saves lessons to memory.
 ---
 
-# Skill: retro
+# Skill: bit-retro
 
-Conduct an end-of-session retrospective. TRIGGER when the user invokes /retro or asks to review how the session went.
+Conduct an end-of-session retrospective. TRIGGER when the user invokes /bit-retro or asks to review how the session went.
 
 ## Instructions
 

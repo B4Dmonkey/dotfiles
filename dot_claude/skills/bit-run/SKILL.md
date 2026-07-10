@@ -1,14 +1,14 @@
 ---
-name: impl-run
-description: Execute an existing implementation plan one step at a time, stopping after each step for the user to verify before continuing. Use whenever the user says "implement the plan", "continue our implementation", "let's build the next step", "do the next step", "pick up where we left off", or otherwise wants to carry out — not write or revise — a markdown impl-plan. This is the execution counterpart to impl-plan and impl-scope: impl-scope frames the WHY and delivery order, impl-plan authors the detailed steps, impl-run carries them out. It reads both the plan and its partner scope, tracks each step's checklist as tasks, runs the plan's automated checks, marks steps done in the plan and rolls completed phases up into the scope, and hands off to the user for verification and commit between steps. Trigger this — not impl-plan — when a plan already exists and the user wants to start or resume building it.
+name: bit-run
+description: Execute an existing implementation plan one step at a time, stopping after each step for the user to verify before continuing. Use whenever the user says "implement the plan", "continue our implementation", "let's build the next step", "do the next step", "pick up where we left off", or otherwise wants to carry out — not write or revise — a markdown bit-plan. This is the execution counterpart to bit-plan and bit-scope: bit-scope frames the WHY and delivery order, bit-plan authors the detailed steps, bit-run carries them out. It reads both the plan and its partner scope, tracks each step's checklist as tasks, runs the plan's automated checks, marks steps done in the plan and rolls completed phases up into the scope, and hands off to the user for verification and commit between steps. Trigger this — not bit-plan — when a plan already exists and the user wants to start or resume building it.
 ---
 
 # Plan Implementer
 
-You execute implementation work that impl-scope and impl-plan produced. It lives across **two documents**:
+You execute implementation work that bit-scope and bit-plan produced. It lives across **two documents**:
 
-- **the plan** (`<feature>-plan.md`, from impl-plan) — the executable detail: a series of **steps**, each one red-green cycle with a scope, an implementation checklist, "Claude verifies" checks, "User verifies" checks, and a suggested commit. This is what you carry out.
-- **the scope** (`<feature>-scope.md`, from impl-scope) — the high-level overview and the WHY. Its coarse **phases** are what the plan's steps roll up into. You read it for context and keep it in sync; you execute against the plan.
+- **the plan** (`<feature>-plan.md`, from bit-plan) — the executable detail: a series of **steps**, each one red-green cycle with a scope, an implementation checklist, "Claude verifies" checks, "User verifies" checks, and a suggested commit. This is what you carry out.
+- **the scope** (`<feature>-scope.md`, from bit-scope) — the high-level overview and the WHY. Its coarse **phases** are what the plan's steps roll up into. You read it for context and keep it in sync; you execute against the plan.
 
 A note on vocabulary, because it's easy to trip on: the **scope** has coarse **phases** (usable value slices); the **plan** breaks each phase into fine-grained **steps** (one commit each, tagged to their phase). You execute one *step* at a time; a *phase* is done when all its steps are.
 
@@ -71,8 +71,8 @@ The user often follows up with small cleanup on the step you just implemented �
 
 Don't thrash or silently retry the same approach. Figure out which of three problems it is — ask the user if it isn't obvious:
 
-1. **The scope is wrong.** The step did what it said, but the *direction* is off — the phase isn't delivering the value we expected, or the delivery order is wrong. This is bigger than one step. Stop and hand back to **impl-scope** to rethink the shape; that will usually mean re-planning the affected phases with impl-plan afterward.
-2. **The plan is wrong.** The scope is sound, but this step's detail was off. Stop implementing and hand back to **impl-plan** to revise the step. Patching code over a wrong plan just buries the misunderstanding for the next session to rediscover.
+1. **The scope is wrong.** The step did what it said, but the *direction* is off — the phase isn't delivering the value we expected, or the delivery order is wrong. This is bigger than one step. Stop and hand back to **bit-scope** to rethink the shape; that will usually mean re-planning the affected phases with bit-plan afterward.
+2. **The plan is wrong.** The scope is sound, but this step's detail was off. Stop implementing and hand back to **bit-plan** to revise the step. Patching code over a wrong plan just buries the misunderstanding for the next session to rediscover.
 3. **The plan is right, the implementation is wrong.** The intent was correct but the code doesn't deliver it. The user will often fix this directly. Offer to revise your approach if they want it — but don't loop on the same idea, and don't expand scope trying to force it.
 
 In all cases, leave the step **unmarked** so it stays the next step to resume.
@@ -81,7 +81,7 @@ In all cases, leave the step **unmarked** so it stays the next step to resume.
 
 ## What this skill does not do
 
-- **Author or redesign the scope or plan** — that's impl-scope and impl-plan. If there's no plan yet, or the plan's steps or the scope's shape need rethinking, switch to the right authoring skill.
+- **Author or redesign the scope or plan** — that's bit-scope and bit-plan. If there's no plan yet, or the plan's steps or the scope's shape need rethinking, switch to the right authoring skill.
 - **Commit** — always the user's action; you suggest the message.
 - **Run multiple steps unattended** — one step per cycle, every time.
 - **Compact on its own** — the user runs `/compact`; you mark the boundary.
