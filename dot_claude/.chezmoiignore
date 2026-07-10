@@ -10,3 +10,10 @@
 !rules/
 !rules/**
 
+# Skills
+!skills/
+!skills/impl-plan/**
+!skills/impl-scope/**
+!skills/impl-run/**
+!skills/pdca-framework/**
+!skills/retro/**
