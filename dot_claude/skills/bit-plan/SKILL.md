@@ -152,6 +152,8 @@ Bad: "Implement child workflow"
 
 When a scope exists, every step names the scope phase it serves — e.g. `## Step 3 (Phase 1 — Ingest) — Contradiction forces real fan-out`. This is what lets progress roll up: bit-run checks off a scope phase once all the steps tagged to it are done. A step serves exactly one phase; if it seems to span two, it's probably two steps. Plan the phases in the scope's delivery order, so the walking skeleton lands first.
 
+**Do not include scope-update instructions in the plan.** The plan's job ends at describing the steps — no "Scope phase rollup" sections, no reminders to check off scope phases, no guidance on updating other documents. Tracking progress and keeping the scope in sync is bit-run's responsibility; including it here just burns output tokens on information the executor already has from the skill that runs it.
+
 ### Refactor steps
 
 TDD is red-green-**refactor**. After accumulating 3–7 examples of a pattern, consider a refactor step. This isn't test-driven (no new failing test) — it's reshaping code while keeping tests green. Include it in the plan as a step with clear criteria for when to attempt it and what to look for (repeated structures, divergent copies of the same logic). If fewer than 3 examples exist, it's too early — leave it alone.
