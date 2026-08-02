@@ -1,76 +1,6 @@
-# format = """
-# [](#e0dcd4)\
-# [ ✙ ](bg:#e0dcd4 fg:#1a1d21)\
-# [ ](bg:#282c34 fg:#e0dcd4)\
-# $directory\
-# [ ](fg:#282c34 bg:#3d424a)\
-# $git_branch\
-# $git_status\
-# [ ](fg:#3d424a bg:#515761)\
-# $nodejs\
-# $rust\
-# $golang\
-# $php\
-# [ ](fg:#515761 bg:#e0dcd4)\
-# $time\
-# [  ](fg:#e0dcd4)\
-# \n$character"""
+"$schema" = 'https://starship.rs/config-schema.json'
 
-# [directory]
-# style = "fg:#ccc4b4 bg:#282c34"
-# format = "[ $path ]($style)"
-# truncation_length = 3
-# truncation_symbol = "…/"
-
-# [directory.substitutions]
-# "Documents" = "󰈙 "
-# "Downloads" = " "
-# "Music" = " "
-# "Pictures" = " "
-
-# [git_branch]
-# symbol = ""
-# style = "bg:#515761"
-# format = '[[ $symbol $branch ](fg:#b4c0c8 bg:#3d424a)]($style)'
-
-# [git_status]
-# style = "bg:#3B4252"
-# format = '[[($all_status$ahead_behind )](fg:#b4c0c8 bg:#3d424a)]($style)'
-
-# [nodejs]
-# symbol = ""
-# style = "bg:#4C566A"
-# format = '[[ $symbol ($version) ](fg:#81A1C1 bg:#4C566A)]($style)'
-
-# [rust]
-# symbol = ""
-# style = "bg:#4C566A"
-# format = '[[ $symbol ($version) ](fg:#81A1C1 bg:#4C566A)]($style)'
-
-# [golang]
-# symbol = ""
-# style = "bg:#4C566A"
-# format = '[[ $symbol ($version) ](fg:#b8c4b8 bg:#515761)]($style)'
-
-# [php]
-# symbol = ""
-# style = "bg:#4C566A"
-# format = '[[ $symbol ($version) ](fg:#81A1C1 bg:#4C566A)]($style)'
-
-# [time]
-# disabled = false
-# time_format = "%R" # Hour:Minute Format
-# style = "bg:#2e2e2e"
-# format = '[[  $time ](fg:#1a1d21 bg:#e0dcd4)]($style)'
-
-# [character]
-# format = '$symbol '
-# success_symbol= " [❯](bold green)"
-# error_symbol= "[ ❯](bold red)"
 format = """
-[░▒▓](fg:fg_main)\
-[ ✙ ](bg:#e0dcd4 fg:#1a1d21)\
-[◤](bg:#282c34 fg:#e0dcd4)\
 $username\
 $hostname\
 $directory\
@@ -82,40 +12,21 @@ $line_break\
 $python\
 $character"""
 
-
-palette = "compline"
-
-[palettes.compline]
-bg1 = "#282c34"
-bg2 = "#3d424a"
-bg3 = "#515761"
-
-fg_main = "#e0dcd4"
-fg_dim  = "#b4c0c8"
-fg_dir  = "#ccc4b4"
-
-accent  = "#d3869b"
-
-# shared colors (mental model)
-# bg1 = #282c34
-# bg2 = #3d424a
-# fg_main = #e0dcd4
-# fg_dim = #b4c0c8
-# fg_dir = #ccc4b4
-
 [directory]
-style = "fg:#ccc4b4 bg:#282c34"
-format = "[ $path ]($style)"
+style = "green"
+
+[character]
+success_symbol = "[◆❯](green)"
+error_symbol = "[◆❯](red)"
+vimcmd_symbol = "[◆❯](purple)"
 
 [git_branch]
-symbol = ""
-style = "fg:#b4c0c8 bg:#3d424a"
-format = "[ $symbol $branch ]($style)"
-# ignore_branches=['main']
+format = "[$branch]($style)"
+style = "bright-black"
 
 [git_status]
-format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted )](fg:#d3869b bg:#3d424a)($ahead_behind$stashed )]($style)"
-style = "fg:#b4c0c8 bg:#3d424a"
+format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
+style = "cyan"
 conflicted = "​"
 untracked = "​"
 modified = "​"
@@ -125,18 +36,15 @@ deleted = "​"
 stashed = "≡"
 
 [git_state]
-style = "fg:#b4c0c8 bg:#3d424a"
-format = '[\($state( $progress_current/$progress_total)\)]($style)'
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
 
 [cmd_duration]
-style = "bg:#2e2e2e"
-format = "[[  $duration ](fg:#1a1d21 bg:#e0dcd4)]($style)"
+format = "[$duration]($style) "
+style = "yellow"
 
 [python]
-style = "italic fg:#b4c0c8 bg:#282c34"
-format = "[ $virtualenv[](fg:#282c34 bg:none )]($style)"
-
-# [character]
-# format = '$symbol '
-# success_symbol= " [❯](bold green)"
-# error_symbol= "[ ❯](bold red)"
+format = "[$virtualenv]($style) "
+style = "bright-black"
+detect_extensions = []
+detect_files = []
