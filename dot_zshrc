@@ -109,3 +109,4 @@ if [ -f "$HOME/.atuin/bin/env" ]; then
   eval "$(atuin init zsh)"
 fi
 
+
