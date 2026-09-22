@@ -44,7 +44,11 @@
       "Bash(yarn dlx *)"
     ]
   },
+  {{- if eq .machine "jw"}}
+  "model": "opus[1m]",
+  {{- else}}
   "model": "claude-sonnet-5",
+  {{- end}}
   "attribution": {
     "commit": ""
   },
@@ -56,7 +60,8 @@
     "typescript-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
     "ai@pydantic-skills": true,
-    "skill-creator@claude-plugins-official": true
+    "skill-creator@claude-plugins-official": true,
+    "bit@bit-pro": true
   },
   "extraKnownMarketplaces": {
     "pydantic-skills": {
