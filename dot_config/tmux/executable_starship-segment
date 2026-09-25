@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+"""Print starship's directory and git modules for PATH, styled for tmux.
+
+starship emits ANSI colour codes; tmux's #() wants #[...] styles, so each
+code is translated. Reset maps to fg=default rather than #[default], which
+would repaint the bar's status-style background.
+
+Usage: starship-segment PATH
+       starship-segment --convert   (translate ANSI on stdin)
+"""
+import os
+import re
+import subprocess
+import sys
+
+MODULES = ["directory", "git_branch", "git_state", "git_status"]
+NAMES = ["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"]
+
+
+def style(params):
+    codes = params.split(";")
+    if codes in (["0"], [""]):
+        return "#[fg=default none]"
+    if codes[:2] == ["38", "5"]:
+        return f"#[fg=colour{codes[2]}]"
+    n = int(codes[0])
+    if 30 <= n <= 37:
+        return f"#[fg={NAMES[n - 30]}]"
+    if 90 <= n <= 97:
+        return f"#[fg=bright{NAMES[n - 90]}]"
+    return ""
+
+
+def convert(text):
+    return re.sub(r"\x1b\[([0-9;]*)m", lambda m: style(m.group(1)), text)
+
+
+def render(path):
+    # starship follows $PWD, not just the process cwd.
+    env = dict(os.environ, PWD=path)
+    return "".join(
+        subprocess.run(["starship", "module", m], cwd=path, env=env,
+                       capture_output=True, text=True).stdout
+        for m in MODULES
+    )
+
+
+if __name__ == "__main__":
+    if sys.argv[1] == "--convert":
+        sys.stdout.write(convert(sys.stdin.read()))
+    else:
+        sys.stdout.write(convert(render(sys.argv[1])))
