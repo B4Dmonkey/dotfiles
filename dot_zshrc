@@ -74,6 +74,9 @@ source $ZSH/oh-my-zsh.sh
 #Starship Commmand Prompt
 if [[ "$TERM_PROGRAM" == "zed" || "$TERM_PROGRAM" == "vscode" ]]; then
   export STARSHIP_CONFIG=~/.config/starship.simple.toml
+elif [[ -n "$TMUX" ]]; then
+  # tmux's status bar shows directory and git, so the prompt drops them.
+  export STARSHIP_CONFIG=~/.config/starship.tmux.toml
 fi
 eval "$(starship init zsh)"
 
